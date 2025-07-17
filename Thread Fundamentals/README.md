@@ -126,11 +126,39 @@ Thread uses:
 - **Border Router**: Connects Thread network to external IP networks (like Wi-Fi or Ethernet), allowing internet access.
 - **Router Eligible End Device (REED)**: Is normal end device that connect to a router, but can become a router if needed.
 #### Minimal Thread Device (MTD)
-- Not always participates in thread network
-- Low power is enabled, such as sleep mode or disable radio
-- Usually battery operated devices
-- Can wake up and join the network when needed
+- Not always participates in thread network.
+- Low power is enabled, such as sleep mode or disable radio.
+- Usually battery operated devices.
+- Can wake up and join the network when needed.
+- Only talks to its parent (a Router or Leader).
 
 **Sub-roles of MTD:**
 - **End Device (ED)**: Communicates with routers but does not route messages. It can sleep to save power.
 - **Sleepy End Device (SED)**: Similar to ED, but designed for very low power operation. It wakes up periodically to send/receive data and then goes back to sleep.
+
+**Border Router (Special Role)**
+- It not a standard core role, but essential.
+- A Border Router connects the Thread mesh to other IP networks (e.g., Wi-Fi or Ethernet).
+- It routes IPv6 traffic between the Thread network and external internet or LAN.
+- Devices like the Google Nest Hub, Apple HomePod mini, Silicon Labs dev boards or ESP32 Border Dev Kit can act as Border Routers.
+- A Border Router is always a Full Thread Device but not necessarily the Leader.
+
+### Thread Network Topology
+Thread uses a mesh topology, which means devices can communicate with each other directly or through intermediate nodes. This allows for:
+- **Extended Range**: Devices can relay messages, increasing coverage.
+- **Self-Healing**: If one device fails, messages can be rerouted through other devices.
+- **Scalability**: New devices can join the network without disrupting existing ones.
+
+### Thread Network Formation
+1. **Leader Election**: When a Thread network starts, devices elect a Leader to manage the network.
+2. **Address Assignment**: The Leader assigns unique IPv6 addresses to each device.
+3. **Routing Table Creation**: Devices build routing tables based on their neighbors and the Leader.
+4. **Network Partitioning**: If devices lose connection, they can form new partitions and rejoin the main network when connectivity is restored.
+5. **Security**: Devices authenticate each other and establish secure communication channels using AES encryption. 
+
+Devices join the network securely and are assigned a role based on their capabilities.
+
+**Thread Network Self-Healing Concept**
+- If the Leader fails, a new one is elected.
+- If more routing capacity is needed, a REED can promote itself to a Router.
+- If a Router is no longer needed, it can demote itself to save power.
