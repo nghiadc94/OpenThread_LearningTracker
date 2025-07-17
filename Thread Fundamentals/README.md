@@ -114,13 +114,23 @@ Thread uses:
   - Your device exposes REST-like resources, e.g., /temperature, /status.
   - It responds to CoAP GET or POST requests from another node or cloud app.
 
-## Thread device types and roles
-### Device Types
+### Thread network roles
 #### Full Thread Device (FTD)
 - Radio is constantly enabled
 - Always participates in thread network
 - Usually are mains powered devices
+
+**Sub-roles of FTD:**
+- **Router**: Forwards messages, extends network range, participates in mesh routing.
+- **Leader**: Manages network operations, assigns addresses, coordinates routing.
+- **Border Router**: Connects Thread network to external IP networks (like Wi-Fi or Ethernet), allowing internet access.
+- **Router Eligible End Device (REED)**: Is normal end device that connect to a router, but can become a router if needed.
 #### Minimal Thread Device (MTD)
 - Not always participates in thread network
 - Low power is enabled, such as sleep mode or disable radio
 - Usually battery operated devices
+- Can wake up and join the network when needed
+
+**Sub-roles of MTD:**
+- **End Device (ED)**: Communicates with routers but does not route messages. It can sleep to save power.
+- **Sleepy End Device (SED)**: Similar to ED, but designed for very low power operation. It wakes up periodically to send/receive data and then goes back to sleep.
