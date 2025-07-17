@@ -48,6 +48,31 @@
   - Device uses CSMA/CA to avoid collisions.
   - Adds MAC headers with source/dest PAN ID and short/extended addresses.
   - Handles ACKs for reliability.
+3. Network Layer
+- Protocol: IPv6 over 6LoWPAN
+- Example:
+  - IPv6 addressing allows global addressing.
+  - 6LoWPAN compresses IPv6 headers to fit in small 127-byte frames.
+4. Transport Layer
+- Protocol: UDP
+- Example:
+  - Your temperature sensor sends updates via CoAP over UDP.
+  - No TCP in Thread (too heavy); UDP gives fast, lightweight transport.
+  - Thread uses mesh routing with Border Routers for internet connectivity.
+5. Session Layer
+- Example:
+  - CoAP tokens and message IDs maintain request/response correlation.
+  - Optional DTLS sessions manage secure channels for end-to-end security.
+6. Presentation Layer
+- Example:
+  - Sensor data is serialized in CBOR or JSON.
+  - Optional DTLS handles encryption/decryption.
+  - May include compression for data payloads.
+7. Application Layer
+- Protocol: CoAP
+- Example:
+  - Your device exposes REST-like resources, e.g., /temperature, /status.
+  - It responds to CoAP GET or POST requests from another node or cloud app.
 ## IEEE 802.15.4 and 6LoWPAN basics
 IEEE 802.15.4 is a low-power, low-data-rate wireless communication standard. It defines how devices physically send and receive data (the Physical Layer) and how they share access to the radio channel (the MAC Layer).
 ## Thread device types and roles
