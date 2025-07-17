@@ -1,5 +1,6 @@
 # Thread Network Education
-## What is Thread?
+## Thread Network Definition
+### What is Thread?
 - Thread is a wireless mesh networking technology developed by the Thread Group
 - Thread using IEEE 802.15.4 radio (at 2.4 GHz) for operation, same radio layer as Zigbee.
 - Thread runs full IPv6 using 6LoWPAN compression to reduce overhead for low-power devices.
@@ -8,7 +9,7 @@
 - Optimized for battery-powered devices.
 - No single point of failure. There's no centralized hub which multiple devices can act as routers.
 - AES encryption, device authentication, and network partitioning are built-in.
-## Why we use it?
+### Why we use it?
 - **Mesh Network**: Better coverage, resilience, and reliability without range extenders.
 - **IPv6-native**: Seamless integration with the internet and other IP-based systems.
 - **Interoperability**: Devices from different vendors can work together.
