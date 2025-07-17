@@ -74,7 +74,31 @@
   - Your device exposes REST-like resources, e.g., /temperature, /status.
   - It responds to CoAP GET or POST requests from another node or cloud app.
 ## IEEE 802.15.4 and 6LoWPAN basics
+### IEEE 802.15.4
 IEEE 802.15.4 is a low-power, low-data-rate wireless communication standard. It defines how devices physically send and receive data (the Physical Layer) and how they share access to the radio channel (the MAC Layer).
+
+**IEEE 802.15.4 Features:**
+- Data Rate: Typically 250 kbps (in 2.4 GHz band)
+- Frequency Bands: 2.4 GHz (worldwide), 868 MHz (EU), 915 MHz (US)
+- Range: ~10–100 meters (extended via mesh)
+- Low Power: Designed for long battery life (months to years)
+- Topology: Star or Mesh
+
+IEEE 802.15.4 included only the radio link and basic coordination between devices, no IP support and no application layer.
+
+### 6LoWPAN
+6LoWPAN stands for **IPv6 over Low-Power Wireless Personal Area Networks**
+It is a network layer adaptation protocol that allows IPv6 packets to be sent over IEEE 802.15.4 radios.
+
+**6LoWPAN Functions:**
+- Header Compression: IPv6 headers are 40 bytes long — too big for 802.15.4’s 127-byte MTU. 6LoWPAN compresses them.
+- Fragmentation: Breaks large packets into smaller ones that fit 802.15.4 frames.
+- Mesh Forwarding: Adds optional mesh routing support (Thread uses its own layer 3 routing though).
+
+**Why we use 6LoWPAN?**
+- It enables direct IP connectivity from small devices to the internet (via IPv6).
+- Devices can talk using standard IP-based protocols like CoAP, MQTT, HTTP, etc., with no proprietary translation needed.
+
 ## Thread device types and roles
 ### Device Types
 #### Full Thread Device (FTD)
