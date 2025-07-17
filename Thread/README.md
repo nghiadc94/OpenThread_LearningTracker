@@ -16,6 +16,15 @@
 - **Low Latency & Power**: Ideal for battery-powered sensors and real-time control.
 - **Secure**: Strong security model with network-level and application-level encryption.
 - **Future-proof**:Backed by major industry players and used in Matter, the new IoT standard.
+### Thread vs Other IoT Protocols
+  | Protocol | Transport          | Topology            | IP-based         | Use Case                      |
+  | -------- | ------------------ | ------------------- | ---------------- | ----------------------------- |
+  | Thread   | 802.15.4 + 6LoWPAN | Mesh                | ✅ Yes          | Smart home, sensors, lighting |
+  | Zigbee   | 802.15.4           | Mesh                | ❌ No           | Smart home (non-IP)           |
+  | BLE      | 2.4GHz             | Star / limited mesh | ❌ No           | Wearables, proximity          |
+  | Wi-Fi    | 802.11             | Star                | ✅ Yes          | High data rate, cameras       |
+  | LoRaWAN  | Sub-GHz            | Star                | ✅ With gateway | Long range, low data          |
+
 ## Thread device types and roles
 ### Device Types
 #### Full Thread Device (FTD)
