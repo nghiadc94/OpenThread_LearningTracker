@@ -1,5 +1,5 @@
-# Thread Network Education
-## Thread Network Definition
+# Thread Network Fundamentals
+## Thread Network basics
 ### What is Thread?
 - Thread is a wireless mesh networking technology developed by the Thread Group
 - Thread using IEEE 802.15.4 radio (at 2.4 GHz) for operation, same radio layer as Zigbee.
@@ -9,6 +9,7 @@
 - Optimized for battery-powered devices.
 - No single point of failure. There's no centralized hub which multiple devices can act as routers.
 - AES encryption, device authentication, and network partitioning are built-in.
+
 ### Why we use it?
 - **Mesh Network**: Better coverage, resilience, and reliability without range extenders.
 - **IPv6-native**: Seamless integration with the internet and other IP-based systems.
@@ -16,6 +17,7 @@
 - **Low Latency & Power**: Ideal for battery-powered sensors and real-time control.
 - **Secure**: Strong security model with network-level and application-level encryption.
 - **Future-proof**:Backed by major industry players and used in Matter, the new IoT standard.
+
 ### Thread vs Other IoT Protocols
   | Protocol | Transport          | Topology            | IP-based         | Use Case                      |
   | -------- | ------------------ | ------------------- | ---------------- | ----------------------------- |
@@ -25,6 +27,19 @@
   | Wi-Fi    | 802.11             | Star                | ✅ Yes          | High data rate, cameras       |
   | LoRaWAN  | Sub-GHz            | Star                | ✅ With gateway | Long range, low data          |
 
+### Typical OSI model for Thread Network
+  | OSI Layer | Name             | Thread / IoT Example                                                                 |
+  | --------- | ---------------- | ------------------------------------------------------------------------------------ |
+  | 7         | **Application**  | **CoAP** (Constrained Application Protocol), your device logic (e.g. sensor service) |
+  | 6         | **Presentation** | Data formats like **CBOR**, optional **TLS/DTLS**, JSON/CBOR serialization           |
+  | 5         | **Session**      | CoAP message IDs, **DTLS session management**, or simple transaction tracking        |
+  | 4         | **Transport**    | **UDP** (Thread uses UDP for lightweight communication)                              |
+  | 3         | **Network**      | **IPv6** + **6LoWPAN** compression (used for efficient IP on low-power networks)     |
+  | 2         | **Data Link**    | **IEEE 802.15.4 MAC** (Medium Access Control, uses CSMA/CA, PAN IDs, etc.)           |
+  | 1         | **Physical**     | **IEEE 802.15.4 PHY** (2.4 GHz radio waves, modulation like O-QPSK, 250 kbps)        |
+
+## IEEE 802.15.4 and 6LoWPAN basics
+IEEE 802.15.4 is a low-power, low-data-rate wireless communication standard. It defines how devices physically send and receive data (the Physical Layer) and how they share access to the radio channel (the MAC Layer).
 ## Thread device types and roles
 ### Device Types
 #### Full Thread Device (FTD)
