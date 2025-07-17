@@ -26,6 +26,19 @@ It is a network layer adaptation protocol that allows IPv6 packets to be sent ov
 - It enables direct IP connectivity from small devices to the internet (via IPv6).
 - Devices can talk using standard IP-based protocols like CoAP, MQTT, HTTP, etc., with no proprietary translation needed.
 
+### How They Work Together in Thread
+  | Layer       | Protocol      | Purpose                   |
+  | ----------- | ------------- | ------------------------- |
+  | Application | CoAP / Matter | Device control, messaging |
+  | Transport   | UDP           | Lightweight transmission  |
+  | Network     | IPv6          | Addressing and routing    |
+  | Adaptation  | 6LoWPAN       | Compress IPv6 headers     |
+  | MAC + PHY   | IEEE 802.15.4 | Over-the-air transmission |
+
+Thread uses:
+- IEEE 802.15.4 for the wireless physical layer.
+- 6LoWPAN to make IPv6 usable over that wireless link.
+
 ## Thread Network basics
 ### What is Thread?
 - Thread is a wireless mesh networking technology developed by the Thread Group
@@ -44,19 +57,6 @@ It is a network layer adaptation protocol that allows IPv6 packets to be sent ov
 - **Low Latency & Power**: Ideal for battery-powered sensors and real-time control.
 - **Secure**: Strong security model with network-level and application-level encryption.
 - **Future-proof**:Backed by major industry players and used in Matter, the new IoT standard.
-
-### How They Work Together in Thread
-  | Layer       | Protocol      | Purpose                   |
-  | ----------- | ------------- | ------------------------- |
-  | Application | CoAP / Matter | Device control, messaging |
-  | Transport   | UDP           | Lightweight transmission  |
-  | Network     | IPv6          | Addressing and routing    |
-  | Adaptation  | 6LoWPAN       | Compress IPv6 headers     |
-  | MAC + PHY   | IEEE 802.15.4 | Over-the-air transmission |
-
-Thread uses:
-- IEEE 802.15.4 for the wireless physical layer.
-- 6LoWPAN to make IPv6 usable over that wireless link.
 
 ### Thread vs Other IoT Protocols
   | Protocol | Transport          | Topology            | IP-based         | Use Case                      |
