@@ -37,7 +37,8 @@
   | 3         | **Network**      | **IPv6** + **6LoWPAN** compression (used for efficient IP on low-power networks)     |
   | 2         | **Data Link**    | **IEEE 802.15.4 MAC** (Medium Access Control, uses CSMA/CA, PAN IDs, etc.)           |
   | 1         | **Physical**     | **IEEE 802.15.4 PHY** (2.4 GHz radio waves, modulation like O-QPSK, 250 kbps)        |
-  **Detail Breakdown for every layers**
+  
+**Detail Breakdown for every layers**
 1. Physical Layer (PHY)
 - Standard: IEEE 802.15.4
 - Example: Your sensor node transmits raw bits over the 2.4GHz band using O-QPSK modulation.
