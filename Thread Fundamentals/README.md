@@ -1,4 +1,31 @@
 # Thread Network Fundamentals
+
+## IEEE 802.15.4 and 6LoWPAN basics
+### IEEE 802.15.4
+IEEE 802.15.4 is a low-power, low-data-rate wireless communication standard. It defines how devices physically send and receive data (the Physical Layer) and how they share access to the radio channel (the MAC Layer).
+
+**IEEE 802.15.4 Features:**
+- Data Rate: Typically 250 kbps (in 2.4 GHz band)
+- Frequency Bands: 2.4 GHz (worldwide), 868 MHz (EU), 915 MHz (US)
+- Range: ~10–100 meters (extended via mesh)
+- Low Power: Designed for long battery life (months to years)
+- Topology: Star or Mesh
+
+IEEE 802.15.4 included only the radio link and basic coordination between devices, no IP support and no application layer.
+
+### 6LoWPAN
+6LoWPAN stands for **IPv6 over Low-Power Wireless Personal Area Networks**
+It is a network layer adaptation protocol that allows IPv6 packets to be sent over IEEE 802.15.4 radios.
+
+**6LoWPAN Functions:**
+- Header Compression: IPv6 headers are 40 bytes long — too big for 802.15.4’s 127-byte MTU. 6LoWPAN compresses them.
+- Fragmentation: Breaks large packets into smaller ones that fit 802.15.4 frames.
+- Mesh Forwarding: Adds optional mesh routing support (Thread uses its own layer 3 routing though).
+
+**Why we use 6LoWPAN?**
+- It enables direct IP connectivity from small devices to the internet (via IPv6).
+- Devices can talk using standard IP-based protocols like CoAP, MQTT, HTTP, etc., with no proprietary translation needed.
+
 ## Thread Network basics
 ### What is Thread?
 - Thread is a wireless mesh networking technology developed by the Thread Group
@@ -17,6 +44,19 @@
 - **Low Latency & Power**: Ideal for battery-powered sensors and real-time control.
 - **Secure**: Strong security model with network-level and application-level encryption.
 - **Future-proof**:Backed by major industry players and used in Matter, the new IoT standard.
+
+### How They Work Together in Thread
+  | Layer       | Protocol      | Purpose                   |
+  | ----------- | ------------- | ------------------------- |
+  | Application | CoAP / Matter | Device control, messaging |
+  | Transport   | UDP           | Lightweight transmission  |
+  | Network     | IPv6          | Addressing and routing    |
+  | Adaptation  | 6LoWPAN       | Compress IPv6 headers     |
+  | MAC + PHY   | IEEE 802.15.4 | Over-the-air transmission |
+
+Thread uses:
+- IEEE 802.15.4 for the wireless physical layer.
+- 6LoWPAN to make IPv6 usable over that wireless link.
 
 ### Thread vs Other IoT Protocols
   | Protocol | Transport          | Topology            | IP-based         | Use Case                      |
@@ -73,31 +113,6 @@
 - Example:
   - Your device exposes REST-like resources, e.g., /temperature, /status.
   - It responds to CoAP GET or POST requests from another node or cloud app.
-## IEEE 802.15.4 and 6LoWPAN basics
-### IEEE 802.15.4
-IEEE 802.15.4 is a low-power, low-data-rate wireless communication standard. It defines how devices physically send and receive data (the Physical Layer) and how they share access to the radio channel (the MAC Layer).
-
-**IEEE 802.15.4 Features:**
-- Data Rate: Typically 250 kbps (in 2.4 GHz band)
-- Frequency Bands: 2.4 GHz (worldwide), 868 MHz (EU), 915 MHz (US)
-- Range: ~10–100 meters (extended via mesh)
-- Low Power: Designed for long battery life (months to years)
-- Topology: Star or Mesh
-
-IEEE 802.15.4 included only the radio link and basic coordination between devices, no IP support and no application layer.
-
-### 6LoWPAN
-6LoWPAN stands for **IPv6 over Low-Power Wireless Personal Area Networks**
-It is a network layer adaptation protocol that allows IPv6 packets to be sent over IEEE 802.15.4 radios.
-
-**6LoWPAN Functions:**
-- Header Compression: IPv6 headers are 40 bytes long — too big for 802.15.4’s 127-byte MTU. 6LoWPAN compresses them.
-- Fragmentation: Breaks large packets into smaller ones that fit 802.15.4 frames.
-- Mesh Forwarding: Adds optional mesh routing support (Thread uses its own layer 3 routing though).
-
-**Why we use 6LoWPAN?**
-- It enables direct IP connectivity from small devices to the internet (via IPv6).
-- Devices can talk using standard IP-based protocols like CoAP, MQTT, HTTP, etc., with no proprietary translation needed.
 
 ## Thread device types and roles
 ### Device Types
